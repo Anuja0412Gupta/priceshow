@@ -26,6 +26,14 @@ flipkart_product_urls = {
     "redmi note 5 pro": 'https://www.flipkart.com/redmi-note-5-pro-black-64-gb/p/itmf2fc3xgmxnhpx?pid=MOBF28FTQPHUPX83&lid=LSTMOBF28FTQPHUPX83H7IIOZ&marketplace=FLIPKART&q=redmi+note+5+pro&store=tyy%2F4io&srno=s_1_1&otracker=search&otracker1=search&fm=organic&iid=914d9ac5-7ca4-490c-92ca-ba677703b52b.MOBF28FTQPHUPX83.SEARCH&ppt=pp&ppn=pp&ssid=hg1ny3cs5s0000001711939261314&qH=286b43aac83aafdc',   
     # Add more products as needed
 }
+headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip',
+        'DNT': '1',  # Do Not Track Request Header
+        'Connection': 'close'
+    }
 def get_product_info(product_url):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
@@ -61,7 +69,7 @@ def get_product_info(product_url):
     st.write("---------------------------------")
 def get_product_info_flipkart(product_url1):
         st.write("Selected Flipkart Product URL:", product_url1)
-        result = requests.get(product_url1)
+        result = requests.get(product_url1,headers=headers)
         soup = bs4.BeautifulSoup(result.content, 'html.parser')
         title = soup.find_all('h1', {"class": "yhB1nd"})
         price = soup.find_all('div', {"class": "_30jeq3 _16Jk6d"})
