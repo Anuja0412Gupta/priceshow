@@ -52,7 +52,6 @@ httpx==0.26.0
 idna==3.4
 importlib-metadata==6.8.0
 ipykernel==6.29.2
-ipython==8.21.0
 isoduration==20.11.0
 itsdangerous==2.1.2
 jedi==0.19.1
